@@ -1,8 +1,8 @@
 mp.events.addCommand("tp", (player, _fulltext, id) => {
-    if (!id || isNaN(parseInt(id, 10))) {
+    if (!id || isNaN(id)) {
         return player.outputChatBox(`Usage: /tp <ID>`)
     }
-    let targetPlayer = mp.players.at(parseInt(id));
+    let targetPlayer = mp.players.at(id);
     if (targetPlayer) {
         player.position = targetPlayer.position;
         player.outputChatBox(`You teleported to ${targetPlayer.name}`);
@@ -10,4 +10,4 @@ mp.events.addCommand("tp", (player, _fulltext, id) => {
     else {
         player.outputChatBox(`That player doesn't exist`)
     };
-})
+});

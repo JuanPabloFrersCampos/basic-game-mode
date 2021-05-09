@@ -1,7 +1,5 @@
 "use strict"
 
-const playerId = true;
-
 mp.events.addCommand('hello', (player) => {
     player.outputChatBox('world');
 });
@@ -35,16 +33,3 @@ mp.events.addCommand('me', (player, fullText) => {
     player.outputChatBox(`${player.name} !{F702FF} ${fullText}`);
 });
 
-mp.events.addCommand("tp", (player, _fulltext, id) => {
-    if (!id || isNaN(parseInt(id, 10))) {
-        return player.outputChatBox(`Usage: /tp <ID>`)
-    }
-    let targetPlayer = mp.players.at(parseInt(id));
-    if (targetPlayer) {
-        player.position = targetPlayer.position;
-        player.outputChatBox(`You teleported to ${targetPlayer.name}`);
-    }
-    else {
-        player.outputChatBox(`That player doesn't exist`)
-    };
-})
