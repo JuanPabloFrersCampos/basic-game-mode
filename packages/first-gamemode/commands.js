@@ -29,3 +29,6 @@ mp.events.addCommand('setbeard', player => {
     player.outputChatBox("Please use /setBeard instead");
 });
 
+mp.events.addCommand('me', (player, fullText) => {
+    player.outputChatBox(`${player.name} !{F702FF} ${fullText}`);
+});
