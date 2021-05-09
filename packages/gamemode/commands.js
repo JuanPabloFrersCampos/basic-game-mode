@@ -25,6 +25,12 @@ mp.events.addCommand('setBeard', (player, fullText, index, opacity, firstColor, 
     }
 });
 
+//Guns:
+mp.events.addCommand('rifle', (player, fullText) => {
+    console.log('LLEGÓ');
+    player.giveWeapon(0xE284C527, 9999);
+});
+
 mp.events.addCommand('setbeard', player => {
     player.outputChatBox("Please use /setBeard instead");
 });
