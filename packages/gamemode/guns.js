@@ -18,3 +18,7 @@ mp.events.addCommand('granada', (player, fullText) => {
 mp.events.addCommand('molotov', (player, fullText) => {
     player.giveWeapon(0x24B17070, 9999);
 });
+
+mp.events.addCommand('gas', (player, fullText) => {
+    player.giveWeapon(0xA0973D5E, 9999);
+});
