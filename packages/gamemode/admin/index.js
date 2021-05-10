@@ -13,18 +13,27 @@ mp.events.addCommand("tp", (player, _fulltext, id) => {
     };
 });
 
-mp.events.addCommand('adminservicio', (player, fullText) => {
+mp.events.addCommand('servicioadmin', (player, fullText) => {
     //Falta verificar si el usuario es administrador o no.
-
+    let vidaPreServicioAdmin;
+    let nombreJugador;
+    let chalecoPreServicioAdmin;
+    //Solo para testear provisoriamente:
+    player.enServicioAdmin = false;
+    
     //Si no está en servicio, almacena la vida que tiene, luego lo hace inmortal. Si está en servicio, le setea la vida pre-servicio. Hay que almacenar esto en la BDD, y verificar las comprobaciones.
-    /* if (player.enServicio == false){ */
-        let vidaPreServicioAdmin = player.health;
-        let nombreJugador = player.name;
-        player.health = 10000;
+    if (player.enServicioAdmin == false){
+        vidaPreServicioAdmin = player.health;
+        nombreJugador = player.name;
+        player.health = 100;
+        player.armour = 100;
         player.name = `!{0804FF}${player.name}`;
-    /* } */
-/*     else{
+        player.outputChatBox(`${player.name}`);
+     }
+    else{
         player.health = vidaPreServicioAdmin;
+        player.armor = chalecoPreServicioAdmin;
         player.name = `!{FFFFFF}${player.name}`;
-    } */
+        player.outputChatBox(`${player.name}`);
+    }
 })
