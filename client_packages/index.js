@@ -1,3 +1,3 @@
 require ('./commands');
-require ('./events.js');
+require ('./events');
 mp.gui.chat.colors = true;

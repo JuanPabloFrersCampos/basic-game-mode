@@ -29,11 +29,13 @@ mp.events.addCommand('servicioadmin', (player, fullText) => {
         player.armour = 100;
         player.name = `!{0804FF}${player.name}`;
         player.outputChatBox(`${player.name}`);
+        player.call('render', [false, player])
      }
     else{
         player.health = vidaPreServicioAdmin;
         player.armor = chalecoPreServicioAdmin;
         player.name = `!{FFFFFF}${player.name}`;
         player.outputChatBox(`${player.name}`);
+        player.call('render', [false, player])
     }
 })
