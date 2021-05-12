@@ -69,8 +69,8 @@ mp.events.addCommand('jail', (player, _fulltext, id, tiempo) => {
         return player.outputChatBox(`Uso: /jail ID Tiempo(minutos) razón`);
     }
     let targetPlayer = mp.players.at(id);
-    /*if (targetPlayer.AdminRank > 0){
-        player.outputChatBox('No podés usar este comando sobre otros administradores!');
+    /*if (player.user.adminLevel >= enums.ADMIN_LEVELS.MODERATOR){
+        player.outputChatBox('No podés usar este comando sobre miembros del staff!');
     } */
     if (targetPlayer.vehicle){
         targetPlayer.removeFromVehicle();
@@ -81,5 +81,5 @@ mp.events.addCommand('jail', (player, _fulltext, id, tiempo) => {
     ` por ${tiempo} minutos`);
     targetPlayer.position = new mp.Vector3(173.2903, -1003.6, -99.65707);
     targetPlayer.health = 100;
-    targetPlayer.dimension = (Math.ceil(Math.random() * 100));
+    targetPlayer.dimension = (Math.ceil(Math.random() * 9999));
 });

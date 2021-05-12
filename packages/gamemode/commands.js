@@ -1,17 +1,5 @@
 "use strict"
 
-mp.events.addCommand('hello', (player) => {
-    player.outputChatBox('world');
-});
-
-mp.events.addCommand('hp', (player) => {
-    player.health =50;
-});
-
-mp.events.addCommand('armor', (player) => {
-    player.armour = 100;
-});
-
 //https://wiki.rage.mp/index.php?title=Player::setHeadOverlay
 mp.events.addCommand('setBeard', (player, fullText, index, opacity, firstColor, secondColor) => {
 
