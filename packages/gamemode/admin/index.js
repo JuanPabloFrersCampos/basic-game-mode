@@ -7,6 +7,7 @@ mp.events.addCommand("tp", (player, _fulltext, id) => {
         return player.outputChatBox(`Usage: /tp <ID>`);
     }
     let targetPlayer = mp.players.at(id);
+
     if (targetPlayer) {
         player.position = targetPlayer.position;
         player.outputChatBox(`You teleported to ${targetPlayer.name}`);
@@ -17,9 +18,9 @@ mp.events.addCommand("tp", (player, _fulltext, id) => {
 });
 
 mp.events.addCommand('servicioadmin', (player, fullText) => {
-    if (!player.checkAdminRank(1)){ 
-        return player.pushError(`No tiene permitido usar esto.`);
-    }
+    /*     if (player.user.adminLevel <= enums.ADMIN_LEVELS.GAME_OPERATOR) {
+        return player.outputChatBox(`No tiene permitido usar esto.`);
+    } */
     let vidaPreServicioAdmin;
     let nombreJugador;
     let chalecoPreServicioAdmin;
@@ -39,7 +40,7 @@ mp.events.addCommand('servicioadmin', (player, fullText) => {
         player.armor = chalecoPreServicioAdmin;
         player.name = `!{FFFFFF}${player.name}`;
         player.outputChatBox(`${player.name}`);
-        player.call('setMeInvincible', [false, player]);
+        player.call('setMeInvincible', ([false, player]));
     }
 });
 
@@ -69,7 +70,7 @@ mp.events.addCommand('jail', (player, _fulltext, id, tiempo) => {
         return player.outputChatBox(`Uso: /jail ID Tiempo(minutos) razón`);
     }
     let targetPlayer = mp.players.at(id);
-    /*if (player.user.adminLevel >= enums.ADMIN_LEVELS.MODERATOR){
+    /*if (targetPlayer.user.adminLevel >= enums.ADMIN_LEVELS.MODERATOR){
         player.outputChatBox('No podés usar este comando sobre miembros del staff!');
     } */
     if (targetPlayer.vehicle){
