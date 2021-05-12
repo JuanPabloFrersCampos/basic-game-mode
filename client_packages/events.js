@@ -1,4 +1,4 @@
 "use strict"
-mp.events.add('render', (bool, player) => {
-    player.setInvincible(bool);
+mp.events.add('setMeInvincible', (booleano, player) => {
+    player.setInvincible(booleano);
 });

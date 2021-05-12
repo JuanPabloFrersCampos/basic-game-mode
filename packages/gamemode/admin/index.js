@@ -23,19 +23,21 @@ mp.events.addCommand('servicioadmin', (player, fullText) => {
     
     //Si no está en servicio, almacena la vida que tiene, luego lo hace inmortal. Si está en servicio, le setea la vida pre-servicio. Hay que almacenar esto en la BDD, y verificar las comprobaciones.
     if (player.enServicioAdmin == false){
+        console.log(player);
+        console.log(typeof(player));
         vidaPreServicioAdmin = player.health;
         nombreJugador = player.name;
         player.health = 100;
         player.armour = 100;
         player.name = `!{0804FF}${player.name}`;
         player.outputChatBox(`${player.name}`);
-        player.call('render', [false, player])
-     }
+        player.call('setMeInvincible', ([true, player]));
+    }
     else{
         player.health = vidaPreServicioAdmin;
         player.armor = chalecoPreServicioAdmin;
         player.name = `!{FFFFFF}${player.name}`;
         player.outputChatBox(`${player.name}`);
-        player.call('render', [false, player])
+        player.call('setMeInvincible', [false, player]);
     }
-})
+});
