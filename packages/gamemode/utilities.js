@@ -1,5 +1,5 @@
 "use strict"
 
-mp.events.addCommand('resucitar', player => {
+mp.events.addCommand('resucitarme', player => {
     player.spawn(player.position);
 });
