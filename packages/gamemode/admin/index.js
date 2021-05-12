@@ -86,8 +86,6 @@ mp.events.addCommand('jail', (player, _fulltext, id, tiempo) => {
 });
 
 mp.events.addCommand('darvida', (player, _fulltext, id, cantidadDeVida) => {
-    console.log(id);
-    console.log(cantidadDeVida);
     /*     if (player.user.adminLevel <= enums.ADMIN_LEVELS.GAME_OPERATOR) {
         return player.outputChatBox(`No tiene permitido usar esto.`);
     } */
