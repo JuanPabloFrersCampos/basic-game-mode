@@ -30,6 +30,8 @@ mp.events.addCommand('setbeard', player => {
 });
 
 mp.events.addCommand('me', (player, fullText) => {
+    console.log(fullText);
+    console.log(typeof(fullText));
     player.outputChatBox(`${player.name} !{F702FF} ${fullText}`);
 });
 

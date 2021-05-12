@@ -1,5 +1,8 @@
 "use strict"
 mp.events.addCommand("tp", (player, _fulltext, id) => {
+    /*     if (player.user.adminLevel <= enums.ADMIN_LEVELS.GAME_OPERATOR) {
+        return player.outputChatBox(`No tiene permitido usar esto.`);
+    } */
     if (!id || isNaN(id)) {
         return player.outputChatBox(`Usage: /tp <ID>`);
     }
@@ -41,11 +44,10 @@ mp.events.addCommand('servicioadmin', (player, fullText) => {
 });
 
 //A este cmd yo le agregaría que a todos los GO, les aparezca que X, resucitó a X.
-//Falta testear la comprobación de sí la persona es admin o no.
 mp.events.addCommand('resucitar', (player, _fulltext, id) => {
-    if (!player.checkAdminRank(1)){ 
+/*     if (player.user.adminLevel <= enums.ADMIN_LEVELS.GAME_OPERATOR) {
         return player.outputChatBox(`No tiene permitido usar esto.`);
-    }
+    } */
     if (!id || isNaN(id)){
         return player.outputChatBox(`Uso: /resucitar ID`);
     }
@@ -55,4 +57,29 @@ mp.events.addCommand('resucitar', (player, _fulltext, id) => {
     }
     targetPlayer.spawn(targetPlayer.position);
     targetPlayer.health = 100;
+});
+
+//Falta la forma de contabilizar el tiempo en jail, y el tiempo restante.
+//Además habría que crear un atributo tipo player.inJail == true, y setearlo.
+mp.events.addCommand('jail', (player, _fulltext, id, tiempo) => {
+    /*     if (player.user.adminLevel <= enums.ADMIN_LEVELS.GAME_OPERATOR) {
+        return player.outputChatBox(`No tiene permitido usar esto.`);
+    } */
+    if (!id || isNaN(id) || isNaN(tiempo)){
+        return player.outputChatBox(`Uso: /jail ID Tiempo(minutos) razón`);
+    }
+    let targetPlayer = mp.players.at(id);
+    /*if (targetPlayer.AdminRank > 0){
+        player.outputChatBox('No podés usar este comando sobre otros administradores!');
+    } */
+    if (targetPlayer.vehicle){
+        targetPlayer.removeFromVehicle();
+    }
+    let razonDeSancion = _fulltext.slice(4);
+
+    mp.players.broadcast(`${targetPlayer.name} fue sancionado por ${razonDeSancion}`+
+    ` por ${tiempo} minutos`);
+    targetPlayer.position = new mp.Vector3(173.2903, -1003.6, -99.65707);
+    targetPlayer.health = 100;
+    targetPlayer.dimension = (Math.ceil(Math.random() * 100));
 });
