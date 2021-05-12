@@ -83,3 +83,30 @@ mp.events.addCommand('jail', (player, _fulltext, id, tiempo) => {
     targetPlayer.health = 100;
     targetPlayer.dimension = (Math.ceil(Math.random() * 9999));
 });
+
+mp.events.addCommand('darvida', (player, _fulltext, id, cantidadDeVida) => {
+    console.log(id);
+    console.log(cantidadDeVida);
+    /*     if (player.user.adminLevel <= enums.ADMIN_LEVELS.GAME_OPERATOR) {
+        return player.outputChatBox(`No tiene permitido usar esto.`);
+    } */
+    if (!id || isNaN(id) || (!cantidadDeVida) || isNaN(cantidadDeVida) || 
+    cantidadDeVida < 0 || cantidadDeVida > 100){
+        return player.outputChatBox(`Uso: /darvida ID VIDA(0-100)`);
+    }
+    let targetPlayer = mp.players.at(id);
+    targetPlayer.health = Number(cantidadDeVida);
+})
+
+mp.events.addCommand('darchaleco', (player, _fulltext, id, cantidadDeChaleco) => {
+    /*     if (player.user.adminLevel <= enums.ADMIN_LEVELS.GAME_OPERATOR) {
+        return player.outputChatBox(`No tiene permitido usar esto.`);
+    } */
+    if (!id || isNaN(id) || (!cantidadDeChaleco) || isNaN(cantidadDeChaleco) || 
+    cantidadDeChaleco < 0 || cantidadDeChaleco > 100){
+        return player.outputChatBox(`Uso: /darchaleco ID CHALECO(0-100)`);
+    }
+    let targetPlayer = mp.players.at(id);
+    targetPlayer.armour = Number(cantidadDeChaleco);
+})
+
