@@ -109,3 +109,30 @@ mp.events.addCommand('darchaleco', (player, _fulltext, id, cantidadDeChaleco) =>
     targetPlayer.armour = Number(cantidadDeChaleco);
 })
 
+mp.events.addCommand('congelar', (player, _, id) => {
+    /*     if (player.user.adminLevel <= enums.ADMIN_LEVELS.GAME_OPERATOR) {
+        return player.outputChatBox(`No tiene permitido usar esto.`);
+    } */
+    if (!id || isNaN(id)){
+        return player.outputChatBox(`Uso: /freezear ID`);
+    }
+    let targetPlayer = mp.players.at(id);
+    /*if (targetPlayer.user.adminLevel >= enums.ADMIN_LEVELS.MODERATOR){
+        player.outputChatBox('No podés usar este comando sobre miembros del staff!');
+    } */
+    player.call('freezePlayer', ([true, targetPlayer]));
+})
+
+mp.events.addCommand('descongelar', (player, _, id) => {
+    /*     if (player.user.adminLevel <= enums.ADMIN_LEVELS.GAME_OPERATOR) {
+        return player.outputChatBox(`No tiene permitido usar esto.`);
+    } */
+    if (!id || isNaN(id)){
+        return player.outputChatBox(`Uso: /freezear ID`);
+    }
+    let targetPlayer = mp.players.at(id);
+    /*if (targetPlayer.user.adminLevel >= enums.ADMIN_LEVELS.MODERATOR){
+        player.outputChatBox('No podés usar este comando sobre miembros del staff!');
+    } */
+    player.call('freezePlayer', ([false, targetPlayer]));
+})
