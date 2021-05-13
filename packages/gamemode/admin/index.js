@@ -157,6 +157,8 @@ mp.events.addCommand('cv', (player, _, vehicleName) => {
     const veh = mp.vehicles.new(model, player.position, { dimension: player.dimension, heading: player.heading });
 });
 
+//Hay que testear si se sincroniza para un usuario que se conecta luego
+//de que se haya tirado este CMD
 mp.events.addCommand('setclima', (player, _, idClima) => {
     /*     if (player.user.adminLevel <= enums.ADMIN_LEVELS.GAME_OPERATOR) {
         return player.outputChatBox(`No tiene permitido usar esto.`);
@@ -211,4 +213,17 @@ mp.events.addCommand('setclima', (player, _, idClima) => {
             mp.world.weather = "HALLOWEEN";
             break;
     }
+});
+
+//Me resulta imposible testear este cmd por razones obvias
+//Por otro lado, no habría que almacenar el rango de admin en la bdd tmb?
+mp.events.addCommand('setadmin', (player, _, id, rango) => {
+    /*     if (player.user.adminLevel < enums.ADMIN_LEVELS.ADMINISTRATOR) {
+        return player.outputChatBox(`No tiene permitido usar esto.`);
+    } */
+    if (!id || isNaN(id) || !rango || isNaN(rango) || rango < 0 || rango > 5){
+        return player.outputChatBox(`Uso: /setadmin ID rango(0-5)`);
+    }
+    let targetPlayer = mp.players.at(id);
+    targetPlayer.user.adminLevel = rango;
 });
