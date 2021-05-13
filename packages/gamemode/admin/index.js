@@ -227,3 +227,4 @@ mp.events.addCommand('setadmin', (player, _, id, rango) => {
     let targetPlayer = mp.players.at(id);
     targetPlayer.user.adminLevel = rango;
 });
+
