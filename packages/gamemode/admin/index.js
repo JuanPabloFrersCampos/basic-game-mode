@@ -241,6 +241,7 @@ mp.events.addCommand('dardinero', (player, _, id, cantidad) => {
     let targetPlayer = mp.players.at(id);
 
     targetPlayer.character.giveMoney(cantidad);
+    player.outputChatBox(`Le has dado ${cantidad} a ${targetPlayer.name}`);
 });
 
 mp.events.addCommand('quitardinero', (player, _, id, cantidad) => {
@@ -254,4 +255,21 @@ mp.events.addCommand('quitardinero', (player, _, id, cantidad) => {
     let targetPlayer = mp.players.at(id);
 
     targetPlayer.character.takeMoney(cantidad);
+    player.outputChatBox(`Le has quitado ${cantidad} a ${targetPlayer.name}`);
 });
+
+mp.events.addCommand('setdimension', (player, _, idPrm, dimensionPrm) => {
+    /*if (player.user.adminLevel < enums.ADMIN_LEVELS.GAME_OPERATOR) {
+        return player.outputChatBox(`No tiene permitido usar esto.`);
+    } */
+    let dimension = Number(parseInt(dimensionPrm));
+    let id = Number(parseInt(idPrm));
+    if ((dimension < 0) || isNaN(id) || isNaN(dimension) || (id < 0)){
+        player.outputChatBox("Uso: /setdimension ID Dimension(0-999)");
+        console.log(id);
+        console.log(dimension);
+    }
+    let targetPlayer = mp.players.at(id);
+
+    targetPlayer.dimension = dimension;
+})
