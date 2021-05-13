@@ -120,7 +120,11 @@ mp.events.addCommand('congelar', (player, _, id) => {
     /*if (targetPlayer.user.adminLevel >= enums.ADMIN_LEVELS.MODERATOR){
         player.outputChatBox('No podés usar este comando sobre miembros del staff!');
     } */
-    player.call('freezePlayer', ([true, targetPlayer]));
+    player.call('congelarJugador', ([true, targetPlayer]));
+    if (targetPlayer.vehicle){
+        let targetVehicle = targetPlayer.vehicle;
+        player.call('congelarVehiculo', ([true, targetVehicle]));
+    }
 })
 
 mp.events.addCommand('descongelar', (player, _, id) => {
@@ -134,5 +138,6 @@ mp.events.addCommand('descongelar', (player, _, id) => {
     /*if (targetPlayer.user.adminLevel >= enums.ADMIN_LEVELS.MODERATOR){
         player.outputChatBox('No podés usar este comando sobre miembros del staff!');
     } */
-    player.call('freezePlayer', ([false, targetPlayer]));
+    player.call('congelarPlayer', ([false, targetPlayer]));
+    player.call('congelarVehiculo', ([false, targetPlayer]));
 })

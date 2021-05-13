@@ -3,6 +3,10 @@ mp.events.add('setMeInvincible', (booleano, player) => {
     player.setInvincible(booleano);
 });
 
-mp.events.add("freezePlayer", (booleano, player) => {
+mp.events.add("congelarJugador", (booleano, player) => {
+    player.freezePosition(booleano);
+});
+
+mp.events.add("congelarVehiculo", (booleano, player) => {
     player.freezePosition(booleano);
 })
