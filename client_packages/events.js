@@ -6,3 +6,7 @@ mp.events.add('setMeInvincible', (booleano, player) => {
 mp.events.add("congelar", (booleano, entity) => {
     entity.freezePosition(booleano);
 });
+
+mp.events.add("setClima", clima => {
+    mp.world.weather = clima;
+});

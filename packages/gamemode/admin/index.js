@@ -156,3 +156,59 @@ mp.events.addCommand('cv', (player, _, vehicleName) => {
 
     const veh = mp.vehicles.new(model, player.position, { dimension: player.dimension, heading: player.heading });
 });
+
+mp.events.addCommand('setclima', (player, _, idClima) => {
+    /*     if (player.user.adminLevel <= enums.ADMIN_LEVELS.GAME_OPERATOR) {
+        return player.outputChatBox(`No tiene permitido usar esto.`);
+    } */
+    if (!idClima || isNaN(idClima)){
+        return player.outputChatBox(`Uso: /setclima 0-14`);
+    }
+    switch (Number(idClima)){
+        case 0:
+            mp.world.weather = "EXTRASUNNY";
+            break;
+        case 1:
+            mp.world.weather = "CLEAR";
+            break;
+        case 2:
+            mp.world.weather = "CLOUDS";
+            break;
+        case 3:
+            mp.world.weather = "SMOG";
+            break;
+        case 4:
+            mp.world.weather = "FOGGY";
+            break;
+        case 5:
+            mp.world.weather = "OVERCAST";
+            break;
+        case 6:
+            mp.world.weather = "RAIN";
+            break;
+        case 7:
+            mp.world.weather = "THUNDER";
+            break;
+        case 8:
+            mp.world.weather = "CLEARING";
+            break;
+        case 9:
+            mp.world.weather = "NEUTRAL";
+            break;
+        case 10:
+            mp.world.weather = "SNOW";
+            break;
+        case 11:
+            mp.world.weather = "BLIZZARD";
+            break;
+        case 12:
+            mp.world.weather = "SNOWLIGHT";
+            break;
+        case 13:
+            mp.world.weather = "XMAS";
+            break;
+        case 14:
+            mp.world.weather = "HALLOWEEN";
+            break;
+    }
+});
