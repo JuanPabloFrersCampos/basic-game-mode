@@ -228,3 +228,30 @@ mp.events.addCommand('setadmin', (player, _, id, rango) => {
     targetPlayer.user.adminLevel = rango;
 });
 
+
+//Hay que testear ambos. En teoría son compatibles con la BDD
+mp.events.addCommand('dardinero', (player, _, id, cantidad) => {
+    /*     if (player.user.adminLevel < enums.ADMIN_LEVELS.ADMINISTRATOR) {
+        return player.outputChatBox(`No tiene permitido usar esto.`);
+    } */
+    if (!id || isNaN(id) || !cantidad || isNaN(cantidad) || cantidad < 1){
+        return player.outputChatBox(`Uso: /dardinero ID cantidad`);
+    }
+    cantidad = Number.parseInt(cantidad);
+    let targetPlayer = mp.players.at(id);
+
+    targetPlayer.character.giveMoney(cantidad);
+});
+
+mp.events.addCommand('quitardinero', (player, _, id, cantidad) => {
+    /*     if (player.user.adminLevel < enums.ADMIN_LEVELS.ADMINISTRATOR) {
+        return player.outputChatBox(`No tiene permitido usar esto.`);
+    } */
+    if (!id || isNaN(id) || !cantidad || isNaN(cantidad) || cantidad < 1){
+        return player.outputChatBox(`Uso: /quitardinero ID cantidad`);
+    }
+    cantidad = Number.parseInt(cantidad);
+    let targetPlayer = mp.players.at(id);
+
+    targetPlayer.character.takeMoney(cantidad);
+});
