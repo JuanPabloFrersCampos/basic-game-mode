@@ -95,7 +95,7 @@ mp.events.addCommand('darvida', (player, _fulltext, id, cantidadDeVida) => {
     }
     let targetPlayer = mp.players.at(id);
     targetPlayer.health = Number(cantidadDeVida);
-})
+});
 
 mp.events.addCommand('darchaleco', (player, _fulltext, id, cantidadDeChaleco) => {
     /*     if (player.user.adminLevel <= enums.ADMIN_LEVELS.GAME_OPERATOR) {
@@ -107,14 +107,14 @@ mp.events.addCommand('darchaleco', (player, _fulltext, id, cantidadDeChaleco) =>
     }
     let targetPlayer = mp.players.at(id);
     targetPlayer.armour = Number(cantidadDeChaleco);
-})
+});
 
 mp.events.addCommand('congelar', (player, _, id) => {
     /*     if (player.user.adminLevel <= enums.ADMIN_LEVELS.GAME_OPERATOR) {
         return player.outputChatBox(`No tiene permitido usar esto.`);
     } */
     if (!id || isNaN(id)){
-        return player.outputChatBox(`Uso: /freezear ID`);
+        return player.outputChatBox(`Uso: /congelar ID`);
     }
     let targetPlayer = mp.players.at(id);
     /*if (targetPlayer.user.adminLevel >= enums.ADMIN_LEVELS.MODERATOR){
@@ -125,14 +125,14 @@ mp.events.addCommand('congelar', (player, _, id) => {
         let targetVehicle = targetPlayer.vehicle;
         player.call('congelar', ([true, targetVehicle]));
     }
-})
+});
 
 mp.events.addCommand('descongelar', (player, _, id) => {
     /*     if (player.user.adminLevel <= enums.ADMIN_LEVELS.GAME_OPERATOR) {
         return player.outputChatBox(`No tiene permitido usar esto.`);
     } */
     if (!id || isNaN(id)){
-        return player.outputChatBox(`Uso: /freezear ID`);
+        return player.outputChatBox(`Uso: /descongelar ID`);
     }
     let targetPlayer = mp.players.at(id);
     /*if (targetPlayer.user.adminLevel >= enums.ADMIN_LEVELS.MODERATOR){
@@ -143,4 +143,16 @@ mp.events.addCommand('descongelar', (player, _, id) => {
         let targetVehicle = targetPlayer.vehicle;
         player.call('congelar', ([false, targetVehicle]));
     }
-})
+});
+
+mp.events.addCommand('cv', (player, _, vehicleName) => {
+        /*     if (player.user.adminLevel <= enums.ADMIN_LEVELS.GAME_OPERATOR) {
+        return player.outputChatBox(`No tiene permitido usar esto.`);
+    } */
+    if (!vehicleName){
+        return player.outputChatBox(`Uso: /cv [nombreDelVehiculo]`);
+    }
+    const model = mp.joaat(vehicleName);
+
+    const veh = mp.vehicles.new(model, player.position, { dimension: player.dimension, heading: player.heading });
+});
